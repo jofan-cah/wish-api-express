@@ -1,0 +1,215 @@
+{
+    "uuid": "6529057fa72f1aa7c3669b6",
+    "start_at": "2023-10-16T01:33:49.287Z",
+    "end_at": "2023-10-16T01:33:49.287Z",
+    "duration": 60,
+    "blood_oxygen": [
+      {
+        "duration": 50,
+        "start_at": "2023-10-16T02:33:49.287Z",
+        "end_at": "2023-10-16T03:34:19.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "99"
+      }
+    ],
+    "blood_pressure": [
+      {
+        "duration": 70,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "130/85"
+      }
+    ],
+    "blood_sugar": [
+      {
+        "duration": 70,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "100"
+      }
+    ],
+    "body_mass_index": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "25"
+      }
+    ],
+    "body_temperature": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "98.7"
+      }
+    ],
+    "body_weight": [
+      {
+        "duration": 80,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "71"
+      }
+    ],
+    "cholesterol": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "185"
+      }
+    ],
+    "heart_rate": [
+      {
+        "duration": 70,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "75"
+      }
+    ],
+    "hemoglobin": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "15"
+      }
+    ],
+    "uric_acid": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "4.8"
+      }
+    ]
+}
+
+[
+    {
+    "uuid": "652f56891c749f2f4aecafa7",
+    "duration": 60,
+    "blood_oxygen": [
+      {
+        "duration": 50,
+        "start_at": "2023-10-16T02:33:49.287Z",
+        "end_at": "2023-10-16T03:34:19.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "85"
+      }
+    ],
+    "blood_pressure": [
+      {
+        "duration": 70,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "90/82"
+      }
+    ],
+    "blood_sugar": [
+      {
+        "duration": 70,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "90"
+      }
+    ],
+    "body_mass_index": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "60"
+      }
+    ],
+    "body_temperature": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "40"
+      }
+    ],
+    "body_weight": [
+      {
+        "duration": 80,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "normal",
+        "value": "50"
+      }
+    ],
+    "cholesterol": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "180"
+      }
+    ],
+    "heart_rate": [
+      {
+        "duration": 70,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "80"
+      }
+    ],
+    "hemoglobin": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "status": "melebihi normal",
+        "value": "70"
+      }
+    ],
+    "uric_acid": [
+      {
+        "duration": 60,
+        "start_at": "2023-10-16T01:33:49.287Z",
+        "end_at": "2023-10-16T02:34:49.287Z",
+        "error": false,
+        "value": "6"
+      }
+    ]
+  }]
+  
+
+  
+
