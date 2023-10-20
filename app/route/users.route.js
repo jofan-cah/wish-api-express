@@ -7,7 +7,7 @@ module.exports = app => {
     const {verifyToken, checkRoleMiddleware} =  require('../midleware/authMidleware')
     const  {body}  = require('express-validator');
 // Untuk latihan ALL data user, role adalah user  kalo sudah deploy maka admin
-    router.get("/", verifyToken , checkRoleMiddleware("user") ,users.findAll);
+    router.get("/",users.findAll);
     router.get("/:id", verifyToken , users.show);
     // router.post("/", verifyToken , users.create);
     router.put("/:id", verifyToken ,

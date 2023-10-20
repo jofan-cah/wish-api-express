@@ -6,7 +6,7 @@ Untuk melakukan registrasi pengguna, Anda dapat menggunakan rute berikut:
 
 - **HTTP POST /register**:
   Ini adalah rute yang digunakan untuk mendaftarkan pengguna baru. Pengguna akan diminta untuk memasukkan informasi seperti alamat email dan kata sandi. Setelah registrasi berhasil, pengguna akan dapat melakukan login menggunakan kredensial yang baru saja dibuat.
-  - Contoh URL: `http://localhost:8003/admin/register`
+  - Contoh URL: `http://localhost:8003/auth/regist-admin`
 
 ## Berhasil Registrasi
 

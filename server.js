@@ -26,6 +26,9 @@ db.mongoose.connect(db.url,mongooseConfig)
     console.log(`gagal koneksi ${err.message}`)
 })
 
+app.get('/api', (req, res) => {
+    res.json({ message: 'Hello, World' });
+  });
 
 
 
@@ -40,5 +43,5 @@ require("./app/route/admins.route")(app)
 
 // membuat Route Sensor
 require("./app/route/sensor.route")(app)
-const PORT = process.env.PORT || 8003
+const PORT = process.env.PORT || 8004
 app.listen(PORT,() => console.log(`SERVER BERJALAN DI PORT ${PORT}`))
