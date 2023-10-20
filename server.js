@@ -41,6 +41,9 @@ require("./app/route/auth.route")(app)
 // Membuat Route Admin
 require("./app/route/admins.route")(app)
 
+// Mengekspor app
+module.exports = app;
+
 // membuat Route Sensor
 require("./app/route/sensor.route")(app)
 const PORT = process.env.PORT || 8004
