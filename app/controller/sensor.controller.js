@@ -11,7 +11,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req,res) => {
     Sensor.find()
-    .then(data=> res.status(200).send({message:"berhasil menampilkan semmua data", data :data}))
+    .then(data=> res.status(200).send({message:"Berhasil menampilkan semmua data", data :data}))
 }
 
 exports.delete = (req,res) => {
@@ -147,7 +147,7 @@ exports.bodyWeight = async (req, res) => {
   try {
     const uuid = req.params.uuid;
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 1;
+    const limit = parseInt(req.query.limit) || 10;
 
     // Validasi query parameter
     if (page < 1 || limit < 1) {
@@ -156,42 +156,46 @@ exports.bodyWeight = async (req, res) => {
 
     const sensorData = await Sensor.find({ uuid });
 
-if (sensorData.length === 0) {
-  return res.status(404).json({ error: 'Data tidak ditemukan' });
-}
-
-
-    if (!sensorData) {
+    if (sensorData.length === 0) {
       return res.status(404).json({ error: 'Data tidak ditemukan' });
     }
 
-    const bodyWeight = sensorData.flatMap((item) => item.body_weight);
+    const bodyWeightData = sensorData.flatMap((item) => item.body_weight);
+    const bodyMassIndexData = sensorData.flatMap((item) => item.body_mass_index);
+
+    const combinedData = {
+      body_weight: bodyWeightData,
+      body_mass_index: bodyMassIndexData,
+    };
 
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
-    const paginatedBodyWeight = bodyWeight.slice(startIndex, endIndex);
+    const paginatedData = {
+      body_weight: bodyWeightData.slice(startIndex, endIndex),
+      body_mass_index: bodyMassIndexData.slice(startIndex, endIndex),
+    };
 
-    const totalItems = bodyWeight.length;
+    const totalItems = bodyWeightData.length; // Total item bisa juga diambil dari bodyMassIndexData jika jumlahnya sama
+
     const totalPages = Math.ceil(totalItems / limit);
 
     const data = {
-      body_weight: paginatedBodyWeight,
+      combined_data: paginatedData,
       totalItems,
       totalPages,
     };
 
     if (page < totalPages) {
-      data.nextPage = `/sensor/body-weight/${uuid}?page=${page + 1}&limit=${limit}`;
+      data.nextPage = `/sensor/weight/${uuid}?page=${page + 1}&limit=${limit}`;
     }
 
     return res.json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Gagal mengambil data body_weight' });
+    res.status(500).json({ error: 'Gagal mengambil data body_weight dan body_mass_index' });
   }
 };
-
 
 
 exports.latestData = async (req, res) => {
@@ -211,6 +215,9 @@ exports.latestData = async (req, res) => {
     res.status(500).json({ message: 'Terjadi kesalahan saat mengambil data terbaru' });
   }
 }
+
+
+
 
 // Akhir Mobile
 

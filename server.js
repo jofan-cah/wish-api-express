@@ -46,5 +46,14 @@ module.exports = app;
 
 // membuat Route Sensor
 require("./app/route/sensor.route")(app)
-const PORT = process.env.PORT || 8004
-app.listen(PORT,() => console.log(`SERVER BERJALAN DI PORT ${PORT}`))
+const PORT = process.env.PORT || 8005
+// Jalankan server dan simpan referensi server dalam variabel 'server'
+server = app.listen(PORT, () => console.log(`SERVER BERJALAN DI PORT ${PORT}`));
+
+// Ekspor app dan server
+module.exports = { app, server };
+
+// Metode untuk menutup koneksi database
+app.closeDatabaseConnection = () => {
+    return db.mongoose.connection.close();
+  };

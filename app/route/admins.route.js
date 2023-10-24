@@ -10,8 +10,8 @@ module.exports = app => {
     const {body} = require("express-validator")
 
     router.get("/" , verifyToken, checkRoleMiddleware("admin"), admins.findAll);
-    router.get("/:id" , checkRoleMiddleware("admin"), verifyToken, admins.show);
-    router.post("/", verifyToken , admins.create);
+    router.get("/:id" , verifyToken, checkRoleMiddleware("admin") ,admins.show);
+    router.post("/",  admins.create);
     router.put("/:id"  , verifyToken  , checkRoleMiddleware("admin"),
     [
         // Validasi email, harus berupa email yang valid

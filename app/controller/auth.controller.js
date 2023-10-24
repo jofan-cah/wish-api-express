@@ -36,7 +36,7 @@ exports.loginUser = async (req,res) => {
 
     const errors = validationResult(req);     
     if (!errors.isEmpty()) {
-        return res.status(400).json({ message : "Coba cek kembali data anda", status : 400, errors: errors.array()});
+        return res.status(401).json({ message : "Coba cek kembali data anda", status : 400, errors: errors.array()});
     }
 
     try {
@@ -119,7 +119,7 @@ exports.loginAdmins = async (req,res) => {
         };
     
         // Buat token JWT
-        const token = jwt.sign({ userId: user.id, email:user.email }, aksesJwt, { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user.id, email:user.email  , role: user.role}, aksesJwt, { expiresIn: '1h' });
         res.json({Message : "Berhasil Login",  token });
     
     } catch (error) {

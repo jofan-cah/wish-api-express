@@ -20,7 +20,7 @@ exports.create = (req,res) => {
 exports.findAll = (req,res) => {
     
     Users.find()
-    .then(data => res.status(200).json({message: "menampilkan Data",data: data }))
+    .then(data => res.status(200).json({message: "Berhasil Mengambil Semua Data",data: data }))
     .catch(err => res.status(500).send({mesagge :err.mesagge}))
 
 }
@@ -28,57 +28,55 @@ exports.findAll = (req,res) => {
 exports.show = (req,res) => {
     const id = req.params.id;
     Users.findById(id)
-    .then(data=> res.status(200).json({mesagge: `Berhasil Menemukan ${id}`,data : data}))
+    .then(data=> res.status(200).json({message: `Berhasil Menemukan `  ,data : data}))
     .catch(err=> res.status(404).send({message: err.message}))
 
 }
 
-exports.update =async (req,res) => {
+exports.update = async (req, res) => {
+  const errors = validationResult(req);
 
-    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ message: "Coba cek kembali data anda", status: 400, errors: errors.array() });
+  }
 
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ message: "Coba cek kembali data anda", status: 400, errors: errors.array() });
-    }
-  
-    const { id } = req.params;
-    const { email, phone, password, gender } = req.body;
-  
-    try {
-      // Temukan pengguna berdasarkan ID
-      const user = await Users.findById(id);
-  
-      if (!user) {
-        return res.status(404).json({ message: "Pengguna tidak ditemukan", status: 404 });
-      }
-  
-      // Validasi nomor hp, jika diubah
-      if (phone !== user.phone) {
-        const existingPhone = await Users.findOne({ phone });
-        if (existingPhone) {
-          return res.status(400).json({ message: 'Nomor hp sudah digunakan', status: 400 });
-        }
-      }
-  
-      // Validasi password, jika diubah
-      if (password) {
-       
-  
-        // Mengenkripsi kata sandi yang baru jika diubah
-        req.body.password = await bcrypt.hash(password, 10);
-      }
-  
-      // Perbarui data pengguna
-      await Users.findByIdAndUpdate(id, req.body);
-  
-      res.status(200).json({ message: "Data pengguna berhasil diperbarui", status: 200 });
-    } catch (error) {
-      res.status(500).json({ message: "Terjadi kesalahan saat memperbarui data pengguna", status: 500 });
+  const { id } = req.params;
+  const { email, phone, password, gender } = req.body;
+
+  try {
+    // Temukan pengguna berdasarkan ID
+    const user = await Users.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "Pengguna tidak ditemukan", status: 404 });
     }
 
-    
+    // Validasi nomor hp, jika diubah
+    if (phone !== user.phone) {
+      const existingPhone = await Users.findOne({ phone });
+      if (existingPhone) {
+        return res.status(400).json({ message: 'Nomor hp sudah digunakan', status: 400 });
+      }
+    }
 
+    // Validasi password
+    if (password !== null && password !== "") {
+      // Mengenkripsi kata sandi yang baru jika diubah
+      req.body.password = await bcrypt.hash(password, 10);
+    } else {
+      // Jika password dikosongkan, gunakan password yang lama
+      req.body.password = user.password;
+    }
+
+    // Perbarui data pengguna
+    await Users.findByIdAndUpdate(id, req.body);
+
+    res.status(200).json({ message: "Data pengguna berhasil diperbarui", status: 200 });
+  } catch (error) {
+    res.status(500).json({ message: "Terjadi kesalahan saat memperbarui data pengguna", status: 500 });
+  }
 }
+
 
 exports.delete = (req,res) => {
 
